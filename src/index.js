@@ -82,17 +82,17 @@ app.post('/authenticate', (req,res) => {
 app.get('/api', async (req, res) => {
   fs.readFile('src/data/testData.json', (err, data) => {
     if (err) throw err;
-    let peerList = JSON.parse(data);
-    console.log('read: ', peerList);
-    res.send(peerList);
+    let testData = JSON.parse(data);
+    console.log('read: ', testData);
+    res.send(testData);
     // res.send('ok');
   });
 });
 
 app.post('/api', async (req, res) => {
-  let peerList = req.body.peerList;
+  let testData = req.body.testData;
   console.log(req.body);
-  let data = JSON.stringify(peerList);
+  let data = JSON.stringify(testData);
   fs.writeFileSync('src/data/testData.json', data);
   res.send('ok');
 });
